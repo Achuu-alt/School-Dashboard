@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Student Dashboard</h1>
+
+  <!-- Student Info -->
+  <section>
+    <h2>Basic Info</h2>
+    <p><strong>Name:</strong> <span id="student-name"></span></p>
+    <p><strong>ID:</strong> <span id="student-id"></span></p>
+    <p><strong>Grade:</strong> <span id="student-grade"></span></p>
+  </section>
+
+  <!-- Attendance -->
+  <section>
+    <h2>Attendance</h2>
+    <p><span id="days-present"></span> / <span id="total-days"></span> days</p>
+    <progress id="attendance-bar" value="0" max="100"></progress>
+  </section>
+
+  <!-- Marks -->
+  <section>
+    <h2>Marks</h2>
+    <ul id="marks-list"></ul>
+  </section>
+
+  <!-- Activities -->
+  <section>
+    <h2>Activities</h2>
+    <ul id="activity-list"></ul>
+  </section>
+
+  <!-- Fees -->
+  <section>
+    <h2>Fees</h2>
+    <p><strong>Total:</strong> ₹<span id="total-fees"></span></p>
+    <p><strong>Paid:</strong> ₹<span id="fees-paid"></span></p>
+    <p><strong>Due:</strong> ₹<span id="fees-due"></span></p>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <h2>Contact</h2>
+    <p>Email: <span id="email"></span></p>
+    <p>Phone: <span id="phone"></span></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
