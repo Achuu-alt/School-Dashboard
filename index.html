@@ -41,6 +41,10 @@
             font-size: 0.9em;
             color: #777;
         }
+        .notes-card {
+            text-align: left;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -190,8 +194,42 @@
                     </div>
                 </section>
             </div>
+            
+            <!-- COURSES PAGE CONTENT - GENERAL OVERVIEW -->
+            <div id="courses-page" class="page-content">
+                <header class="header">
+                    <h1>My Courses 📚</h1>
+                </header>
+                <section class="courses-grid">
+                    <div class="course-card">
+                        <i class="fas fa-laptop-code fa-3x" style="color: #6a1b9a;"></i>
+                        <h3>CS 301 - Web Dev</h3>
+                        <p>Web Development Fundamentals</p>
+                    </div>
+                    <div class="course-card">
+                        <i class="fas fa-sitemap fa-3x" style="color: #2e7d32;"></i>
+                        <h3>CS 305 - Data Structures</h3>
+                        <p>Algorithms and Data Structures</p>
+                    </div>
+                    <div class="course-card">
+                        <i class="fas fa-atom fa-3x" style="color: #c62828;"></i>
+                        <h3>PHYS 101 - Physics I</h3>
+                        <p>Introduction to Classical Mechanics</p>
+                    </div>
+                    <div class="course-card">
+                        <i class="fas fa-calculator fa-3x" style="color: #d84315;"></i>
+                        <h3>MATH 205 - Calculus II</h3>
+                        <p>Integral Calculus and Applications</p>
+                    </div>
+                    <div class="course-card">
+                        <i class="fas fa-history fa-3x" style="color: #455a64;"></i>
+                        <h3>HIST 210 - World History</h3>
+                        <p>Modern Global History</p>
+                    </div>
+                </section>
+            </div>
 
-            <!-- CLASS PORTAL PAGE -->
+            <!-- CLASS PORTAL PAGE - FOCUSED VIEW -->
             <div id="class-portal-page" class="page-content">
                 <header class="header">
                     <h1>Class Portal 🧑‍🏫</h1>
@@ -201,16 +239,19 @@
                         <i class="fas fa-laptop-code fa-3x" style="color: #6a1b9a;"></i>
                         <h3>CS 301 - Web Dev</h3>
                         <p>Professor Smith</p>
+                        <button class="btn" style="margin-top: 10px;" onclick="showPage('web-dev-notes-page')">Go to Class</button>
                     </div>
                     <div class="course-card">
                         <i class="fas fa-sitemap fa-3x" style="color: #2e7d32;"></i>
                         <h3>CS 305 - Data Structures</h3>
                         <p>Professor Williams</p>
+                        <button class="btn" style="margin-top: 10px;" onclick="showPage('data-structures-notes-page')">Go to Class</button>
                     </div>
                     <div class="course-card">
                         <i class="fas fa-atom fa-3x" style="color: #c62828;"></i>
                         <h3>PHYS 101 - Physics I</h3>
                         <p>Professor Davis</p>
+                        <button class="btn" style="margin-top: 10px;" onclick="showPage('physics-notes-page')">Go to Class</button>
                     </div>
                 </section>
             </div>
@@ -304,6 +345,69 @@
                             <img src="https://placehold.co/800x600/E9EAEF/333333?text=Campus+Map+Goes+Here" alt="Placeholder Campus Map" style="max-width: 100%; border-radius: 8px;">
                             <p style="margin-top: 10px; color: #777;">Click to zoom and explore buildings!</p>
                         </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- WEB DEV NOTES PAGE - NEW SECTION -->
+            <div id="web-dev-notes-page" class="page-content">
+                <header class="header">
+                    <h1>CS 301 - Web Dev Notes ✍️</h1>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide notes-card">
+                        <div class="card-header">
+                            <h2>Lecture 5: CSS Flexbox & Grid</h2>
+                        </div>
+                        <p>Key concepts:
+                            <ul>
+                                <li><strong>Flexbox:</strong> for one-dimensional layouts (rows or columns). Main properties are `display: flex`, `flex-direction`, and `justify-content`.</li>
+                                <li><strong>Grid:</strong> for two-dimensional layouts (rows and columns). Main properties are `display: grid`, `grid-template-columns`, and `grid-gap`.</li>
+                                <li>Flexbox and Grid can be used together to create complex, responsive designs.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- DATA STRUCTURES NOTES PAGE - NEW SECTION -->
+            <div id="data-structures-notes-page" class="page-content">
+                <header class="header">
+                    <h1>CS 305 - Data Structures Notes ✍️</h1>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide notes-card">
+                        <div class="card-header">
+                            <h2>Lecture 3: Linked Lists</h2>
+                        </div>
+                        <p>Key concepts:
+                            <ul>
+                                <li>A linked list is a linear data structure, where elements are not stored at a contiguous memory location.</li>
+                                <li>Elements are linked using pointers. Each node contains data and a pointer to the next node.</li>
+                                <li>Good for insertions and deletions, but slow for random access.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- PHYSICS NOTES PAGE - NEW SECTION -->
+            <div id="physics-notes-page" class="page-content">
+                <header class="header">
+                    <h1>PHYS 101 - Physics I Notes ✍️</h1>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide notes-card">
+                        <div class="card-header">
+                            <h2>Lecture 7: Newton's Laws of Motion</h2>
+                        </div>
+                        <p>Key concepts:
+                            <ol>
+                                <li>An object in motion stays in motion with the same speed and in the same direction unless acted upon by an unbalanced force.</li>
+                                <li>The acceleration of an object is dependent upon two variables - the net force acting upon the object and the mass of the object. Formula: F = ma.</li>
+                                <li>For every action, there is an equal and opposite reaction.</li>
+                            </ol>
+                        </p>
                     </div>
                 </section>
             </div>
