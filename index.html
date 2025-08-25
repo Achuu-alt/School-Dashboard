@@ -7,6 +7,41 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* CSS to hide pages initially */
+        .page-content {
+            display: none;
+        }
+        /* CSS to show the active page */
+        .page-content.active {
+            display: block;
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .course-card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+            text-align: center;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-card h3 {
+            margin-top: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .course-card p {
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
@@ -18,99 +53,272 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Grades</a></li>
-                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
-                    <li><a href="#"><i class="fas fa-bullhorn"></i> Announcements</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li class="active"><a href="#" onclick="showPage('dashboard-page')"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#" onclick="showPage('courses-page')"><i class="fas fa-book"></i> Courses</a></li>
+                    <li><a href="#" onclick="showPage('grades-page')"><i class="fas fa-chart-line"></i> Grades</a></li>
+                    <li><a href="#" onclick="showPage('schedule-page')"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                    <li><a href="#" onclick="showPage('announcements-page')"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                    <li><a href="#" onclick="showPage('settings-page')"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" onclick="showPage('logout-page')"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
         </aside>
 
         <main class="main-content">
-            <header class="header">
-                <h1>Dashboard</h1>
-                <div class="header-right">
-                    <span id="current-date"></span>
-                    <i class="fas fa-bell header-icon"></i>
-                    <i class="fas fa-search header-icon"></i>
-                </div>
-            </header>
+            <!-- DASHBOARD PAGE CONTENT -->
+            <div id="dashboard-page" class="page-content active">
+                <header class="header">
+                    <h1>Dashboard</h1>
+                    <div class="header-right">
+                        <span id="current-date"></span>
+                        <i class="fas fa-bell header-icon"></i>
+                        <i class="fas fa-search header-icon"></i>
+                    </div>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Quick Links 🔗</h2>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="quick-links-grid">
+                            <!-- Links now trigger a JavaScript function -->
+                            <a href="#" onclick="showPage('class-portal-page')" class="quick-link-item"><i class="fas fa-chalkboard-teacher"></i> Class Portal</a>
+                            <a href="#" onclick="showPage('student-email-page')" class="quick-link-item"><i class="fas fa-envelope"></i> Student Email</a>
+                            <a href="#" onclick="showPage('tuition-page')" class="quick-link-item"><i class="fas fa-file-invoice-dollar"></i> Tuition</a>
+                            <a href="#" onclick="showPage('campus-map-page')" class="quick-link-item"><i class="fas fa-map-marker-alt"></i> Campus Map</a>
+                        </div>
+                    </div>
+                    <div class="card card-wide progress-card" id="course-progress">
+                        <div class="card-header">
+                            <h2>Course Progress 📈</h2>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-details">
+                                <p>Web Development</p>
+                                <span class="progress-percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-details">
+                                <p>Data Structures</p>
+                                <span class="progress-percentage">50%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 50%;"></div>
+                            </div>
+                        </div>
+                        <div class="progress-item">
+                            <div class="progress-details">
+                                <p>Physics I</p>
+                                <span class="progress-percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" id="deadlines">
+                        <div class="card-header">
+                            <h2>Upcoming Deadlines 📅</h2>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <ul class="deadline-list">
+                            <li>
+                                <p>Physics Homework</p>
+                                <span>Oct 25, 2025</span>
+                            </li>
+                            <li>
+                                <p>Math Quiz</p>
+                                <span>Oct 28, 2025</span>
+                            </li>
+                            <li>
+                                <p>History Essay</p>
+                                <span>Nov 2, 2025</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card" id="grades">
+                        <div class="card-header">
+                            <h2>Recent Grades 💯</h2>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <ul class="grades-list">
+                            <li>
+                                <span>Web Dev Midterm</span>
+                                <span class="grade-pill grade-a">A</span>
+                            </li>
+                            <li>
+                                <span>Physics Lab Report</span>
+                                <span class="grade-pill grade-b">B+</span>
+                            </li>
+                            <li>
+                                <span>Data Structures Exam</span>
+                                <span class="grade-pill grade-c">C</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card card-long" id="announcements">
+                        <div class="card-header">
+                            <h2>Announcements 📣</h2>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
+                        <ul class="announcements-list">
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 20, 2025</span>
+                                </div>
+                                <p>Campus library closing early on Friday for maintenance.</p>
+                            </li>
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 18, 2025</span>
+                                </div>
+                                <p>Final exams schedule has been posted online.</p>
+                            </li>
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 15, 2025</span>
+                                </div>
+                                <p>Reminder: Course registration for next semester is now open.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
 
-            <section class="dashboard-grid">
-                <div class="card card-wide progress-card">
-                    <div class="card-header">
-                        <h2>Course Progress 📈</h2>
-                        <i class="fas fa-ellipsis-v"></i>
+            <!-- CLASS PORTAL PAGE -->
+            <div id="class-portal-page" class="page-content">
+                <header class="header">
+                    <h1>Class Portal 🧑‍🏫</h1>
+                </header>
+                <section class="courses-grid">
+                    <div class="course-card">
+                        <i class="fas fa-laptop-code fa-3x" style="color: #6a1b9a;"></i>
+                        <h3>CS 301 - Web Dev</h3>
+                        <p>Professor Smith</p>
                     </div>
-                    <div class="progress-item">
-                        <div class="progress-details">
-                            <p>Web Development</p>
-                            <span class="progress-percentage">75%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 75%;"></div>
-                        </div>
+                    <div class="course-card">
+                        <i class="fas fa-sitemap fa-3x" style="color: #2e7d32;"></i>
+                        <h3>CS 305 - Data Structures</h3>
+                        <p>Professor Williams</p>
                     </div>
-                    <div class="progress-item">
-                        <div class="progress-details">
-                            <p>Data Structures</p>
-                            <span class="progress-percentage">50%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 50%;"></div>
-                        </div>
+                    <div class="course-card">
+                        <i class="fas fa-atom fa-3x" style="color: #c62828;"></i>
+                        <h3>PHYS 101 - Physics I</h3>
+                        <p>Professor Davis</p>
                     </div>
-                    <div class="progress-item">
-                        <div class="progress-details">
-                            <p>Physics I</p>
-                            <span class="progress-percentage">90%</span>
-                        </div>
-                        <div class="progress-bar">
-                            <div class="progress-bar-fill" style="width: 90%;"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Upcoming Deadlines 📅</h2>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                    <ul class="deadline-list">
-                        <li>
-                            <p>Physics Homework</p>
-                            <span>Oct 25, 2025</span>
-                        </li>
-                        <li>
-                            <p>Math Quiz</p>
-                            <span>Oct 28, 2025</span>
-                        </li>
-                        <li>
-                            <p>History Essay</p>
-                            <span>Nov 2, 2025</span>
-                        </li>
-                    </ul>
-                </div>
+                </section>
+            </div>
 
-                <div class="card">
-                    <div class="card-header">
-                        <h2>Recent Grades 🏆</h2>
-                        <i class="fas fa-ellipsis-v"></i>
+            <!-- STUDENT EMAIL PAGE -->
+            <div id="student-email-page" class="page-content">
+                <header class="header">
+                    <h1>Student Email 📧</h1>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide">
+                        <div class="card-header">
+                            <h2>Inbox</h2>
+                        </div>
+                        <ul class="announcements-list">
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 23, 2025</span>
+                                    <p>Professor Smith</p>
+                                </div>
+                                <p>Reminder: Project 2 due this Friday</p>
+                            </li>
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 22, 2025</span>
+                                    <p>Campus Admin</p>
+                                </div>
+                                <p>Upcoming university event: Job Fair</p>
+                            </li>
+                            <li>
+                                <div class="announcement-meta">
+                                    <span>Oct 21, 2025</span>
+                                    <p>Financial Aid</p>
+                                </div>
+                                <p>Your fall semester financial aid has been processed.</p>
+                            </li>
+                        </ul>
                     </div>
-                    <ul class="grades-list">
-                        <li>
-                            <p>Web Development Project</p>
-                            <span class="grade grade-a">A</span>
-                        </li>
-                        <li>
-                            <p>Data Structures Midterm</p>
-                            <span class="grade grade-b">B+</span>
-                        </li>
-                        <li>
-                            <p>Physics Lab Report</p>
-                            <span class="grade grade-a">A-</span>
-                        </li>
-                    </ul>
+                </section>
+            </div>
+
+            <!-- TUITION PAGE CONTENT -->
+            <div id="tuition-page" class="page-content">
+                <header class="header">
+                    <h1>Tuition 💰</h1>
+                    <div class="header-right">
+                        <i class="fas fa-wallet header-icon"></i>
+                        <i class="fas fa-file-invoice header-icon"></i>
+                    </div>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide">
+                        <div class="card-header">
+                            <h2>Billing Summary</h2>
+                        </div>
+                        <div class="billing-summary">
+                            <p><strong>Current Balance:</strong> $5,200.00</p>
+                            <p><strong>Next Due Date:</strong> Nov 15, 2025</p>
+                        </div>
+                        <a href="#" class="payment-button">Make a Payment</a>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Payment History</h2>
+                        </div>
+                        <ul class="history-list">
+                            <li>
+                                <p>Sept 2025 Tuition Payment</p>
+                                <span>-$2,600.00</span>
+                            </li>
+                            <li>
+                                <p>Aug 2025 Tuition Payment</p>
+                                <span>-$2,600.00</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <!-- CAMPUS MAP PAGE -->
+            <div id="campus-map-page" class="page-content">
+                <header class="header">
+                    <h1>Campus Map 🗺️</h1>
+                </header>
+                <section class="dashboard-grid">
+                    <div class="card card-wide">
+                        <div class="card-header">
+                            <h2>Interactive Map</h2>
+                        </div>
+                        <div style="text-align: center; padding: 20px;">
+                            <img src="https://placehold.co/800x600/E9EAEF/333333?text=Campus+Map+Goes+Here" alt="Placeholder Campus Map" style="max-width: 100%; border-radius: 8px;">
+                            <p style="margin-top: 10px; color: #777;">Click to zoom and explore buildings!</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script>
+        // JavaScript to handle page switching
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
