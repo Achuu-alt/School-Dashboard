@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Simple, simulated validation
             // In a real app, you would send this to a server for authentication
-            if (username === 'student' && password === 'password123') {
+            if (username === 'student1' && password === 'password12') {
                 // Successful login: Redirect to the main dashboard
                 window.location.href = 'index.html'; // Assuming your dashboard HTML is named index.html
             } else {
