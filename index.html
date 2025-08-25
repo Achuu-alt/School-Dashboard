@@ -1,56 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Dashboard</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Student Dashboard</h1>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="profile">
+                <img src="https://via.placeholder.com/150" alt="Student Avatar" class="profile-img">
+                <h3>John Doe</h3>
+                <p>Computer Science</p>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Grades</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Schedule</a></li>
+                    <li><a href="#"><i class="fas fa-bullhorn"></i> Announcements</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
 
-  <!-- Student Info -->
-  <section>
-    <h2>Basic Info</h2>
-    <p><strong>Name:</strong> <span id="student-name"></span></p>
-    <p><strong>ID:</strong> <span id="student-id"></span></p>
-    <p><strong>Grade:</strong> <span id="student-grade"></span></p>
-  </section>
+        <main class="main-content">
+            <header class="header">
+                <h1>Dashboard</h1>
+                <div class="header-right">
+                    <span id="current-date"></span>
+                    <i class="fas fa-bell header-icon"></i>
+                    <i class="fas fa-search header-icon"></i>
+                </div>
+            </header>
 
-  <!-- Attendance -->
-  <section>
-    <h2>Attendance</h2>
-    <p><span id="days-present"></span> / <span id="total-days"></span> days</p>
-    <progress id="attendance-bar" value="0" max="100"></progress>
-  </section>
+            <section class="dashboard-grid">
+                <div class="card card-wide progress-card">
+                    <div class="card-header">
+                        <h2>Course Progress 📈</h2>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-details">
+                            <p>Web Development</p>
+                            <span class="progress-percentage">75%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-details">
+                            <p>Data Structures</p>
+                            <span class="progress-percentage">50%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div class="progress-details">
+                            <p>Physics I</p>
+                            <span class="progress-percentage">90%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Upcoming Deadlines 📅</h2>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <ul class="deadline-list">
+                        <li>
+                            <p>Physics Homework</p>
+                            <span>Oct 25, 2025</span>
+                        </li>
+                        <li>
+                            <p>Math Quiz</p>
+                            <span>Oct 28, 2025</span>
+                        </li>
+                        <li>
+                            <p>History Essay</p>
+                            <span>Nov 2, 2025</span>
+                        </li>
+                    </ul>
+                </div>
 
-  <!-- Marks -->
-  <section>
-    <h2>Marks</h2>
-    <ul id="marks-list"></ul>
-  </section>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recent Grades 💯</h2>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <ul class="grades-list">
+                        <li>
+                            <span>Web Dev Midterm</span>
+                            <span class="grade-pill grade-a">A</span>
+                        </li>
+                        <li>
+                            <span>Physics Lab Report</span>
+                            <span class="grade-pill grade-b">B+</span>
+                        </li>
+                        <li>
+                            <span>Data Structures Exam</span>
+                            <span class="grade-pill grade-c">C</span>
+                        </li>
+                    </ul>
+                </div>
 
-  <!-- Activities -->
-  <section>
-    <h2>Activities</h2>
-    <ul id="activity-list"></ul>
-  </section>
+                <div class="card card-long">
+                    <div class="card-header">
+                        <h2>Announcements 📣</h2>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <ul class="announcements-list">
+                        <li>
+                            <div class="announcement-meta">
+                                <span>Oct 20, 2025</span>
+                            </div>
+                            <p>Campus library closing early on Friday for maintenance.</p>
+                        </li>
+                        <li>
+                            <div class="announcement-meta">
+                                <span>Oct 18, 2025</span>
+                            </div>
+                            <p>Final exams schedule has been posted online.</p>
+                        </li>
+                        <li>
+                            <div class="announcement-meta">
+                                <span>Oct 15, 2025</span>
+                            </div>
+                            <p>Reminder: Course registration for next semester is now open.</p>
+                        </li>
+                    </ul>
+                </div>
 
-  <!-- Fees -->
-  <section>
-    <h2>Fees</h2>
-    <p><strong>Total:</strong> ₹<span id="total-fees"></span></p>
-    <p><strong>Paid:</strong> ₹<span id="fees-paid"></span></p>
-    <p><strong>Due:</strong> ₹<span id="fees-due"></span></p>
-  </section>
-
-  <!-- Contact -->
-  <section>
-    <h2>Contact</h2>
-    <p>Email: <span id="email"></span></p>
-    <p>Phone: <span id="phone"></span></p>
-  </section>
-
-  <script src="script.js"></script>
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Quick Links 🔗</h2>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
+                    <div class="quick-links-grid">
+                        <a href="#" class="quick-link-item"><i class="fas fa-chalkboard-teacher"></i> Class Portal</a>
+                        <a href="#" class="quick-link-item"><i class="fas fa-envelope"></i> Student Email</a>
+                        <a href="#" class="quick-link-item"><i class="fas fa-file-invoice-dollar"></i> Tuition</a>
+                        <a href="#" class="quick-link-item"><i class="fas fa-map-marker-alt"></i> Campus Map</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
